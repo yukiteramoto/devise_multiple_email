@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  web:
+    container_name: devise-app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/devise_multiple_email
+      - bundle:/usr/local/bundle
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    command: bundle exec rails s -b 0.0.0.0
+    ports:
+      - 3000:3000
+    tty: true
+    stdin_open: true
+  db:
+    container_name: devise-app-mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+volumes:
+  bundle:
+    driver: local
+  mysql_data:
+    driver: local
