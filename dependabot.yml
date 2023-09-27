@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      # day: "monday"
+      # time: "06:00"
+      timezone: "Asia/Tokyo"
+    # reviewers:
+    #   - "rails-reviewers"
+    # ignore:
+    #   - dependency-name: "*"
+    #     update-types: ["version-update:semver-patch"]
+    #   # parser shall be same version as Ruby
+    #   - dependency-name: "parser"
